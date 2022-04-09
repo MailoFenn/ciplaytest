@@ -1,5 +1,5 @@
+import React from 'react'
 import {Form, Input, Button, Row, Alert} from "antd";
-import React from "react";
 
 const validateMessage = {
     types: {
@@ -7,13 +7,13 @@ const validateMessage = {
     }
 }
 
-const AuthForm = (props) => {
+const RegForm = (props) => {
     return (
         <Form
             validateMessages={validateMessage}
         >
             <Row justify={'center'}>
-                <h1>Auth</h1>
+                <h1>Registration</h1>
             </Row>
             <Form.Item
                 name={['user', 'email']}
@@ -27,9 +27,9 @@ const AuthForm = (props) => {
             >
                 <Input
                     placeholder={'E-mail'}
-                    value={props.state.authLogin}
+                    value={props.state.regLogin}
                     onChange={(ev) => {
-                        props.readLogin(ev.target.value)
+                        props.readRegLogin(ev.target.value)
                     }}
                 />
             </Form.Item>
@@ -44,9 +44,27 @@ const AuthForm = (props) => {
             >
                 <Input.Password
                     placeholder={'Password'}
-                    value={props.state.authPass}
+                    value={props.state.regPass}
                     onChange={(ev) => {
-                        props.readPass(ev.target.value)
+                        props.readRegPass(ev.target.value)
+                    }}
+                />
+            </Form.Item>
+            <Form.Item
+                name={'password'}
+                rules={[
+                    {
+                        required: true,
+                        message: 'Input password'
+                    }
+                ]}
+
+            >
+                <Input.Password
+                    placeholder={'Confirm password'}
+                    value={props.state.regPassConf}
+                    onChange={(ev) => {
+                        props.readRegPassConf(ev.target.value)
                     }}
                 />
             </Form.Item>
@@ -55,17 +73,17 @@ const AuthForm = (props) => {
                     type={'primary'}
                     htmlType={'submit'}
                 >
-                    Log in
+                    Registration
                 </Button>
             </Form.Item>
             <Button
                 type={'link'}
                 onClick={props.togglePage}
             >
-                Registration
+                Auth
             </Button>
         </Form>
     );
 }
 
-export default AuthForm;
+export default RegForm
