@@ -20,6 +20,12 @@ const sendAPI = {
             login: data.login,
             pass: data.pass
         })
+    },
+    change(data) {
+        return instance.post('/', {
+            act: 'change',
+            pass: data.pass
+        })
     }
 }
 

@@ -9,6 +9,8 @@ async def handle(request):
         return web.Response(text='ok', status=200)
     elif res['act'] == 'reg':
         return web.Response(text='ok', status=200)
+    elif res['act'] == 'change':
+        return web.Response(text='ok', status=200)
 
 app = web.Application()
 aiohttp_debugtoolbar.setup(app)

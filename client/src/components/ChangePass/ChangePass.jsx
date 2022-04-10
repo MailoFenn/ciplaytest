@@ -7,34 +7,32 @@ const validateMessage = {
     }
 }
 
-const RegForm = (props) => {
+const ChangePass = (props) => {
     return (
         <Form
             onFinish={() => props.submit({
-                login: props.state.authLogin,
-                pass: props.state.authPass
+                pass: props.state.newPass
             })}
             onFinishFailed={() => console.log('fail')}
             validateMessages={validateMessage}
         >
             <Row justify={'center'}>
-                <h1>Registration</h1>
+                <h1>Change password</h1>
             </Row>
             <Form.Item
-                name={['user', 'email']}
+                name={'old_password'}
                 rules={[
-                    {type: 'email'},
                     {
                         required: true,
-                        message: 'Input E-mail'
+                        message: 'Input old password'
                     }
                 ]}
             >
                 <Input
-                    placeholder={'E-mail'}
-                    value={props.state.regLogin}
+                    placeholder={'Old password'}
+                    value={props.state.oldPass}
                     onChange={(ev) => {
-                        props.readRegLogin(ev.target.value)
+                        props.readOldPass(ev.target.value)
                     }}
                 />
             </Form.Item>
@@ -51,10 +49,10 @@ const RegForm = (props) => {
                 ]}
             >
                 <Input.Password
-                    placeholder={'Password'}
-                    value={props.state.regPass}
+                    placeholder={'New password'}
+                    value={props.state.newPass}
                     onChange={(ev) => {
-                        props.readRegPass(ev.target.value)
+                        props.readNewPass(ev.target.value)
                     }}
                 />
             </Form.Item>
@@ -74,13 +72,12 @@ const RegForm = (props) => {
                         },
                     }),
                 ]}
-
             >
                 <Input.Password
                     placeholder={'Confirm password'}
-                    value={props.state.regPassConf}
+                    value={props.state.newPassConf}
                     onChange={(ev) => {
-                        props.readRegPassConf(ev.target.value)
+                        props.readNewPassConf(ev.target.value)
                     }}
                 />
             </Form.Item>
@@ -89,17 +86,11 @@ const RegForm = (props) => {
                     type={'primary'}
                     htmlType={'submit'}
                 >
-                    Registration
+                    Change pass
                 </Button>
             </Form.Item>
-            <Button
-                type={'link'}
-                onClick={props.togglePage}
-            >
-                Auth
-            </Button>
         </Form>
     );
 }
 
-export default RegForm
+export default ChangePass

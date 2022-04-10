@@ -26,7 +26,7 @@ export const submit = (data) => {
         sendAPI.reg(data)
             .then((res) => {
                 if (res.data === 'ok') {
-                    message.info('Successful registration')
+                    message.success('Successful registration')
                 }
             })
 }
