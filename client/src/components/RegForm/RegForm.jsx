@@ -10,6 +10,11 @@ const validateMessage = {
 const RegForm = (props) => {
     return (
         <Form
+            onFinish={() => props.submit({
+                login: props.state.authLogin,
+                pass: props.state.authPass
+            })}
+            onFinishFailed={() => console.log('fail')}
             validateMessages={validateMessage}
         >
             <Row justify={'center'}>
@@ -38,7 +43,10 @@ const RegForm = (props) => {
                 rules={[
                     {
                         required: true,
-                        message: 'Input password'
+                        message: 'Password must require 4-10 symbol and capital letter',
+                        max: 10,
+                        min: 4,
+                        pattern: /[A-Z]/gm
                     }
                 ]}
             >
@@ -51,12 +59,20 @@ const RegForm = (props) => {
                 />
             </Form.Item>
             <Form.Item
-                name={'password'}
+                name={'confirm'}
                 rules={[
                     {
                         required: true,
                         message: 'Input password'
-                    }
+                    },
+                    ({getFieldValue}) => ({
+                        validator(_, value) {
+                            if (!value || getFieldValue('password') === value) {
+                                return Promise.resolve();
+                            }
+                            return Promise.reject(new Error('The two passwords that you entered do not match!'));
+                        },
+                    }),
                 ]}
 
             >

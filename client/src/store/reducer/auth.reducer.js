@@ -2,7 +2,8 @@ import {authAction} from "../action/auth.action";
 
 const initialState = {
     authLogin: '',
-    authPass: ''
+    authPass: '',
+    isAuth: false
 }
 
 const authReducer = (state = initialState, action) => {

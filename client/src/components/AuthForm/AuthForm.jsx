@@ -10,10 +10,15 @@ const validateMessage = {
 const AuthForm = (props) => {
     return (
         <Form
+            onFinish={() => props.submit({
+                login: props.state.authLogin,
+                pass: props.state.authPass
+            })}
+            onFinishFailed={() => console.log('fail')}
             validateMessages={validateMessage}
         >
             <Row justify={'center'}>
-                <h1>Auth</h1>
+                <h1>Auth {props.isAuth?'ok':null}</h1>
             </Row>
             <Form.Item
                 name={['user', 'email']}
@@ -38,7 +43,10 @@ const AuthForm = (props) => {
                 rules={[
                     {
                         required: true,
-                        message: 'Input password'
+                        message: 'Password must require 4-10 symbol and capital letter',
+                        max: 10,
+                        min: 4,
+                        pattern: /[A-Z]/gm
                     }
                 ]}
             >

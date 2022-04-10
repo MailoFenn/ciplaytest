@@ -1,6 +1,6 @@
 import RegForm from "../components/RegForm/RegForm";
 import React from "react";
-import {readRegLogin, readRegPass, readRegPassConf} from "../store/action/reg.action";
+import {readRegLogin, readRegPass, readRegPassConf, submit} from "../store/action/reg.action";
 import {togglePage} from "../store/action/general.action";
 
 const RegFormContainer = (props) => {
@@ -11,6 +11,7 @@ const RegFormContainer = (props) => {
             readRegPass={(pass) => props.state.dispatch(readRegPass(pass))}
             readRegPassConf={(pass) => props.state.dispatch(readRegPassConf(pass))}
             togglePage={() => props.state.dispatch(togglePage())}
+            submit={(data) => submit(data)}
         /> : null
     );
 }
