@@ -14,7 +14,7 @@ const AuthForm = (props) => {
                 login: props.state.authLogin,
                 pass: props.state.authPass
             })}
-            onFinishFailed={() => console.log('fail')}
+            onFinishFailed={(e) => console.log('fail' + e)}
             validateMessages={validateMessage}
         >
             <Row justify={'center'}>
@@ -33,6 +33,7 @@ const AuthForm = (props) => {
                 <Input
                     placeholder={'E-mail'}
                     value={props.state.authLogin}
+                    defaultValue={props.state.authLogin}
                     onChange={(ev) => {
                         props.readLogin(ev.target.value)
                     }}
@@ -52,6 +53,7 @@ const AuthForm = (props) => {
             >
                 <Input.Password
                     placeholder={'Password'}
+                    defaultValue={props.state.authPass}
                     value={props.state.authPass}
                     onChange={(ev) => {
                         props.readPass(ev.target.value)

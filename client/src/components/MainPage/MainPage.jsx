@@ -7,10 +7,10 @@ import ChangePassContainer from "../../container/ChangePassContainer";
 const MainPage = (props) => {
     return (
         <BrowserRouter>
-            <Nav/>
+            <Nav state={props.state}/>
             <Row align="middle" justify="center" className="App">
                 <Routes>
-                    <Route path={'/main'} element={<h1>Main</h1>}/>
+                    <Route path={'/'} element={<h1>Main</h1>}/>
                     <Route path={'/about'} element={<h1>About</h1>}/>
                     <Route path={'/faq'} element={<h1>FAQ</h1>}/>
                     <Route path={'/change_pass'} element={<ChangePassContainer state={props.state}/>}/>

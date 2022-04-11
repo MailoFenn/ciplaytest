@@ -4,8 +4,8 @@ import aiohttp_debugtoolbar
 
 async def handle(request):
     res = await request.json()
+    print(res['act'])
     if res['act'] == 'auth':
-        print('auth')
         return web.Response(text='ok', status=200)
     elif res['act'] == 'reg':
         return web.Response(text='ok', status=200)

@@ -11,8 +11,8 @@ const RegForm = (props) => {
     return (
         <Form
             onFinish={() => props.submit({
-                login: props.state.authLogin,
-                pass: props.state.authPass
+                login: props.state.regLogin,
+                pass: props.state.regPass
             })}
             onFinishFailed={() => console.log('fail')}
             validateMessages={validateMessage}
@@ -33,6 +33,7 @@ const RegForm = (props) => {
                 <Input
                     placeholder={'E-mail'}
                     value={props.state.regLogin}
+                    defaultValue={props.state.regLogin}
                     onChange={(ev) => {
                         props.readRegLogin(ev.target.value)
                     }}
@@ -53,6 +54,7 @@ const RegForm = (props) => {
                 <Input.Password
                     placeholder={'Password'}
                     value={props.state.regPass}
+                    defaultValue={props.state.regPass}
                     onChange={(ev) => {
                         props.readRegPass(ev.target.value)
                     }}
@@ -79,6 +81,7 @@ const RegForm = (props) => {
                 <Input.Password
                     placeholder={'Confirm password'}
                     value={props.state.regPassConf}
+                    defaultValue={props.state.regPassConf}
                     onChange={(ev) => {
                         props.readRegPassConf(ev.target.value)
                     }}

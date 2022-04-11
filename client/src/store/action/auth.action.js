@@ -1,5 +1,6 @@
 import sendAPI from '../../api/api'
 import {generalAction} from "./general.action";
+import { useNavigate } from "react-router-dom";
 
 export const authAction = {
     READ_LOGIN: 'READ_LOGIN',
@@ -16,6 +17,7 @@ export const readPass = (text) => ({
     type: authAction.READ_PASS,
     text: text
 })
+
 
 export const submit = (data) => {
     return dispatch => {
